@@ -11,13 +11,6 @@ const UpdateForm: React.FC = observer(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    const accessToken = localStorage.getItem("accessToken");
-    console.log("userId", userId);
-    console.log("accessToken", accessToken);
-  }, []);
-
-  useEffect(() => {
     if (updated) {
       navigate("/thank-you");
     }
@@ -59,7 +52,6 @@ const UpdateForm: React.FC = observer(() => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
     updateEmployeeDetail(formData);
   };
 

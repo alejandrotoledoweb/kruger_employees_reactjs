@@ -9,7 +9,6 @@ const CreateEmployee = observer(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("form", isLoggedIn);
     if (!isLoggedIn) {
       navigate("/");
     }
@@ -32,7 +31,6 @@ const CreateEmployee = observer(() => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Form data submitted:", formData);
     createEmployee(formData);
     setFormData({
       cedula: "",

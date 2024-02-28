@@ -10,7 +10,6 @@ const Login: React.FC = observer(() => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    console.log("Login attempt with:", { username, password });
     loginUser(username, password);
   };
   return (

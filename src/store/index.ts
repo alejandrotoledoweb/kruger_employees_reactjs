@@ -124,7 +124,6 @@ class Store {
   };
 
   logout = () => {
-    console.log("logout", this.isLoggedIn);
     this.isLoggedIn = false;
     this.role = "";
     this.username = "";
@@ -134,23 +133,11 @@ class Store {
   setLoggedIn = (value: boolean) => {
     this.isLoggedIn = value;
     localStorage.setItem("loggedIn", "false");
-    console.log(this.isLoggedIn);
+
   };
 
   createEmployee = async (employee: Employee) => {
     const { names, lastNames, email, cedula } = employee;
-
-    // const requestBody = {
-    //   names: names.trim(),
-    //   lastNames: lastNames.trim(),
-    //   email: email.trim(),
-    //   cedula: cedula.trim(),
-    // };
-
-    console.log( typeof names)
-    console.log( typeof lastNames)
-    console.log( typeof cedula)
-    console.log( typeof email)
 
     const token = localStorage.getItem("accessToken");
     try {
@@ -180,7 +167,9 @@ class Store {
 
       console.log("Create success:", response.data);
     } catch (err) {
-      console.warn("Error:", err.message);
+      if (err instanceof Error) {
+        console.warn("Error:", err.message);
+      }
     }
   };
 }

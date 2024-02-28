@@ -9,7 +9,6 @@ const NotFoundPage: React.FC = observer(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("form", isLoggedIn);
     if (!isLoggedIn) {
       navigate("/");
     }
