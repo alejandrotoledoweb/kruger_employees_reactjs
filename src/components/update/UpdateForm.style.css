@@ -1,0 +1,50 @@
+/* UpdateForm.css */
+.form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-container label span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="tel"],
+.form-container input[type="date"],
+.form-container input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px; /* Increased space for better visual separation */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.form-container button {
+  background-color: #646cff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-container button:hover {
+  background-color: #555ecf;
+}
