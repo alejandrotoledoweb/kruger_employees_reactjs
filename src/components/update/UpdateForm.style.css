@@ -1,6 +1,6 @@
 /* UpdateForm.css */
 .form-container {
-  max-width: 600px;
+  max-width: 90%;
   margin: 20px auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -24,7 +24,8 @@
 .form-container input[type="tel"],
 .form-container input[type="date"],
 .form-container input[type="number"] {
-  width: 100%;
+  width: 95%;
+  display: block;
   padding: 8px;
   margin-bottom: 20px; /* Increased space for better visual separation */
   border: 1px solid #ccc;

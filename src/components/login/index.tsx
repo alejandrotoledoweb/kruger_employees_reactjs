@@ -8,7 +8,7 @@ const Login: React.FC = observer(() => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: unknown): void => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     console.log("Login attempt with:", { username, password });
     loginUser(username, password);

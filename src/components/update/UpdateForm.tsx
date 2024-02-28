@@ -1,11 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UpdateForm.style.css";
 import { observer } from "mobx-react";
 import store from "../../store";
 import { EmployeeDetail } from "../../store/interfaces/EmployeeDetail.interface";
+import { useNavigate } from "react-router-dom";
 
 const UpdateForm: React.FC = observer(() => {
-  const { updateEmployeeDetail, employeeDetail } = store;
+  const { updateEmployeeDetail, employeeDetail, updated, isLoggedIn, role } =
+    store;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
+    console.log("userId", userId);
+    console.log("accessToken", accessToken);
+  }, []);
+
+  useEffect(() => {
+    if (updated) {
+      navigate("/thank-you");
+    }
+  }, [updated]);
+
+  useEffect(() => {
+    if (role == "ADMIN") {
+      navigate("/create-user");
+    }
+  }, [role]);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn]);
 
   const [formData, setFormData] = useState<EmployeeDetail>({
     id: employeeDetail.id,
@@ -21,7 +49,8 @@ const UpdateForm: React.FC = observer(() => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type } = e.target;
+    const { checked } = e.target as HTMLInputElement;
     setFormData((prevState) => ({
       ...prevState,
       [name]: type === "checkbox" ? checked : value,

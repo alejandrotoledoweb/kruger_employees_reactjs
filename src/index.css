@@ -26,6 +26,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -33,6 +34,12 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+input {
+  margin-bottom: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
 button {
