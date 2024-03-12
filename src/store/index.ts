@@ -132,32 +132,39 @@ class Store {
 
   setLoggedIn = (value: boolean) => {
     this.isLoggedIn = value;
-    localStorage.setItem("loggedIn", "false");
+    localStorage.setItem("loggedIn", "true");
 
   };
+
+  setRole = (value: string | null)=>{
+    this.role = value!
+  }
 
   createEmployee = async (employee: Employee) => {
     const { names, lastNames, email, cedula } = employee;
 
     const token = localStorage.getItem("accessToken");
+    const body = {
+      names,
+      lastNames ,
+      email,
+      cedula: cedula,
+    }
+    console.log(body)
+    console.log(token)
     try {
       const response = await axios.post(
         "http://localhost:8080/api/employee",
-        {
-          names,
-          lastNames ,
-          email,
-          cedula: Number(cedula),
-        },
+        body,
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "applicaton/json",
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
-      if (response.status === 200) {
+console.log({response})
+      if (response.status == 201) {
         const { username, password } = response.data;
         runInAction(() => {
           this.username = username;
@@ -169,6 +176,7 @@ class Store {
     } catch (err) {
       if (err instanceof Error) {
         console.warn("Error:", err.message);
+        console.warn("Error:", err);
       }
     }
   };

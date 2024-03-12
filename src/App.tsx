@@ -10,10 +10,12 @@ import { useEffect } from "react";
 import CreateEmployee from "./components/CreateEmployee/CreateEmployee";
 
 const App: React.FC = observer(() => {
-  const { isLoggedIn, logout, setLoggedIn, role } = store;
+  const { isLoggedIn, logout, setLoggedIn, setRole, role } = store;
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
+    const role = localStorage.getItem("role");
     setLoggedIn(loggedIn == "true" ? true : false);
+    setRole(role);
   }, []);
   const handleLogOut = () => {
     logout();

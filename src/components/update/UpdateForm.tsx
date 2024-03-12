@@ -17,7 +17,8 @@ const UpdateForm: React.FC = observer(() => {
   }, [updated]);
 
   useEffect(() => {
-    if (role == "ADMIN") {
+    console.log("ROLE store", role);
+    if (role == "ADMIN" || role == "") {
       navigate("/create-user");
     }
   }, [role]);
